@@ -1,63 +1,92 @@
 const outputElement = document.getElementById('output');
 const inputElement = document.getElementById('input');
 
+const prompt = 'visitor@portofolio:~$';
+
 const commands = {
   help: `
-Available commands:\n
-- help\n
-- project\n
-- github\n
-- about\n
-- contact\n
+Available commands:
+- help
+- project
+- github
+- about
+- contact
 - neofetch
 `,
   project: `
-+-------------------+
-|   My Projects     |
-+-------------------+
-1. Portfolio Website
-2. E-commerce App
-3. Personal Blog
+<i class="fa-solid fa-globe"></i> <a href="https://fauzymadani.infinityfreeapp.com" style="text-decoration: none; color: #00ff00;">Portfolio Website</a><br>
+<i class="fa-solid fa-terminal"></i> <a href="https://github.com/fauzymadani" style="text-decoration: none; color: #00ff00;">Cli tools</a><br>
+<i class="fa-solid fa-newspaper"></i> <a href="https://fauzymadani.infinityfreeapp.com" style="text-decoration: none; color: #00ff00;">My Blog</a><br><br>
 
-ASCII Art:
-  ________
- /        \\
-| PROJECT |
- \________/
+ASCII Art:<br>
+  ________<br>
+ /        \\<br>
+| PROJECT |<br>
+ \\________/<br>
 `,
-  github: 'https://github.com/yourusername',
-  about: `
-Hi, I'm a web developer specializing in creating interactive websites!
-I enjoy working with JavaScript, CSS, and HTML.`,
+  github: `
+                                                       
+                                         ...*@@@@@@@@@@*...                                         
+                                       .@@@@@@@@@@@@@@@@@@@@. .                                     
+                                   ..*@@@@@@@@@@@@@@@@@@@@@@@@*.                                    
+                                  .*@@@@@@@@@@@@@@@@@@@@@@@@@@@@*.                                  
+                                ..@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.                                 
+                                .@@@@@@.....#@%=....=%@%.....@@@@@@.                                
+                              ..@@@@@@@..   ...        .     @@@@@@@.                               
+                              .@@@@@@@@..                   .@@@@@@@@..                             
+                             .-@@@@@@@.                      .@@@@@@@=.                             
+                             .@@@@@@@=.                       =@@@@@@@.                            
+                             .@@@@@@@..                        @@@@@@@                              
+                             .@@@@@@@:.                       :@@@@@@@                              
+                             .@@@@@@@@.                       @@@@@@@@.                             
+                             .+@@@@@@@-..                    :@@@@@@@+.                             
+                              .@@@@@@@@@..                 .@@@@@@@@@..                             
+                              ..@@@:.#@@@@%....       ..:%@@@@@@@@@@.                               
+                                :@@@@..@@@@@@#.     ..#@@@@@@@@@@@@:.                               
+                                ..@@@@..:@@@+.        .@@@@@@@@@@@..                                
+                                   %@@@*......        .@@@@@@@@@@. .                                
+                                    .@@@@@@@@.         @@@@@@@@...                                  
+                                     . :@@@@@         .@@@@@:..                                     
+                                          .--         .--
+                                 <i class="fa-brands fa-github"></i> https://github.com/fauzymadani      
+  `,
+  about: `Hi, I'm a web developer specializing in creating interactive websites! I enjoy working with JavaScript, CSS, and HTML.
+i love linux related stuff.`,
   contact: `
-You can contact me at: 
-- Email: yourname@example.com
-- LinkedIn: linkedin.com/in/yourname
+You can contact me at: <br>
+- Email: keperluansekolahfauzy@gmail.com<br>
+- my website: https://fauzymadani.infinityfreeapp.com<br>
 `,
   neofetch: `
-   .---.   Anime ASCII Art
-  |     |
- (o     o)
-  \\  ^  /
-   '--|--'
+  <img src="./images/foto.png" align="left" style="height: 200px;">
 
-user@portfolio
------------------
-OS: Custom WebOS
-Shell: Terminal-based Portfolio
-`
+<i class="fas fa-laptop-code"></i> user@portfolio<br>
+-----------------<br>
+OS: Custom WebOS<br>
+Shell: bash<br>
+user: visitor<br>
+github: github.com/fauzymadani
+`,
+clear: 'clear'
 };
+let commandHistory = [];
+let historyIndex = -1;
+
+
 
 inputElement.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     const input = inputElement.value.trim();
+    appendOutput(`${prompt}${input}`);
     processCommand(input);
     inputElement.value = '';
   }
 });
 
 function processCommand(command) {
-  if (commands[command]) {
+  if (command === 'clear') {
+    clearOutput();  // call function clear nya bro
+  } else if (commands[command]) {
     appendOutput(commands[command]);
   } else {
     appendOutput(`Command not found: ${command}`);
@@ -67,7 +96,7 @@ function processCommand(command) {
 function appendOutput(text) {
   const outputLine = document.createElement('div');
   outputLine.classList.add('output-line');
-  outputLine.textContent = text;
+  outputLine.innerHTML = text;  // Change this line to use innerHTML instead of textContent
   outputElement.appendChild(outputLine);
   outputElement.scrollTop = outputElement.scrollHeight;
 }
@@ -75,4 +104,10 @@ function appendOutput(text) {
 window.onload = function() {
     inputElement.focus();
   };
+
+  function clearOutput() {
+    outputElement.innerHTML = ''; // Mengosongkan semua konten di elemen output
+  }
+  
+
   
