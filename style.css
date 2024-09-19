@@ -1,0 +1,50 @@
+body {
+  background-color: black;
+  color: #00ff00;
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#terminal {
+  width: 80%;
+  height: 70%;
+  border: 1px solid #00ff00;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+#input-line {
+  display: flex;
+}
+
+#prompt {
+  margin-right: 5px;
+}
+
+#input {
+  background: none;
+  border: none;
+  color: #00ff00;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.output-line {
+  margin-bottom: 10px;
+}
+
+.ascii-art {
+  white-space: pre;
+  color: #00ff00;
+}
+
+#output {
+  padding-bottom: 20px; /* Tambahkan padding bawah untuk memberi ruang ke input */
+}
