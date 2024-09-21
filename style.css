@@ -8,6 +8,7 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 #terminal {
@@ -15,8 +16,17 @@ body {
   height: 70%;
   border: 1px solid #00ff00;
   padding: 10px;
-  overflow-y: auto;
+  overflow-y: auto; /* Ubah dari scroll ke auto */
+  padding-right: 17px; /* Tetap dengan padding ini jika diperlukan */
+  box-sizing: content-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
+
+#terminal::-webkit-scrollbar {
+  display: none; /* Safari dan Chrome */
+}
+
 
 #input-line {
   display: flex;
