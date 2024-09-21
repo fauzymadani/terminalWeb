@@ -1,7 +1,7 @@
-const outputElement = document.getElementById('output');
-const inputElement = document.getElementById('input');
+const outputElement = document.getElementById("output");
+const inputElement = document.getElementById("input");
 
-const prompt = 'visitor@portofolio:~$';
+const prompt = "visitor@portofolio:~$";
 
 const commands = {
   help: `
@@ -13,7 +13,7 @@ Available commands:
 - contact
 - neofetch
 - pgp key
-- <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="text-decoration: none;">onlyfans</a>
+- <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="text-decoration: none; color: yellow;">onlyfans</a>
 `,
   project: `
 <i class="fa-solid fa-globe"></i> <a href="https://fauzymadani.infinityfreeapp.com" style="text-decoration: none; color: #00ff00;">Portfolio Website</a><br>
@@ -69,8 +69,8 @@ Shell: bash<br>
 name: fauzy<br>
 github: github.com/fauzymadani
 `,
-clear: 'clear',
-pgpkey: `
+  clear: "clear",
+  pgpkey: `
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGbuGycBEACdLiale6UEgrYdUxW60AtkZvkisz9wReeD+x5dm9K/ghFymAOd
@@ -124,25 +124,23 @@ veQHRAp8ar1gzhM1fdNjm+BSK0aB/zWOBuaSFKNGJSu+83xIqFj5PsyEhnmGJP/j
 =DYR6
 -----END PGP PUBLIC KEY BLOCK-----
 
-`
+`,
 };
 let commandHistory = [];
 let historyIndex = -1;
 
-
-
-inputElement.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
+inputElement.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
     const input = inputElement.value.trim();
     appendOutput(`${prompt}${input}`);
     processCommand(input);
-    inputElement.value = '';
+    inputElement.value = "";
   }
 });
 
 function processCommand(command) {
-  if (command === 'clear') {
-    clearOutput();  // call function clear nya bro
+  if (command === "clear") {
+    clearOutput(); // call function clear nya bro
   } else if (commands[command]) {
     appendOutput(commands[command]);
   } else {
@@ -151,20 +149,17 @@ function processCommand(command) {
 }
 
 function appendOutput(text) {
-  const outputLine = document.createElement('div');
-  outputLine.classList.add('output-line');
-  outputLine.innerHTML = text;  // Change this line to use innerHTML instead of textContent
+  const outputLine = document.createElement("div");
+  outputLine.classList.add("output-line");
+  outputLine.innerHTML = text; // Change this line to use innerHTML instead of textContent
   outputElement.appendChild(outputLine);
   outputElement.scrollTop = outputElement.scrollHeight;
 }
 
-window.onload = function() {
-    inputElement.focus();
-  };
+window.onload = function () {
+  inputElement.focus();
+};
 
-  function clearOutput() {
-    outputElement.innerHTML = ''; // Mengosongkan semua konten di elemen output
-  }
-  
-
-  
+function clearOutput() {
+  outputElement.innerHTML = ""; // Mengosongkan semua konten di elemen output
+}
